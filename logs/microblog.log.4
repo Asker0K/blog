@@ -1,0 +1,112 @@
+2020-02-07 12:01:44,663 ERROR: Exception on /user/lexa [GET] [in c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 1947, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 2241, in preprocess_request
+    rv = func()
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\app\routes.py", line 19, in before_request
+    g.locale = str(get_locale())
+NameError: name 'g' is not defined
+2020-02-07 12:02:04,775 INFO: Microblog startup [in c:\users\a_smi\pycharmprojects\microblog\venv\app\__init__.py:55]
+2020-02-07 12:06:57,939 ERROR: Exception on /index [POST] [in c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "c:\users\a_smi\pycharmprojects\microblog\venv\app\routes.py", line 27, in index
+    language = guess_language(form.post.data)
+NameError: name 'guess_language' is not defined
+2020-02-07 12:07:51,219 INFO: Microblog startup [in c:\users\a_smi\pycharmprojects\microblog\venv\app\__init__.py:55]
+2020-02-07 12:09:36,399 INFO: Microblog startup [in c:\users\a_smi\pycharmprojects\microblog\venv\app\__init__.py:55]
+2020-02-07 12:11:50,323 INFO: Microblog startup [in c:\users\a_smi\pycharmprojects\microblog\venv\app\__init__.py:55]
+2020-02-07 14:40:48,619 INFO: Microblog startup [in C:\Users\a_smi\PycharmProjects\microblog\app\__init__.py:75]
+2020-02-07 18:09:21,149 INFO: Microblog startup [in C:\Users\a_smi\PycharmProjects\microblog\app\__init__.py:77]
+2020-02-07 18:11:12,611 INFO: Microblog startup [in C:\Users\a_smi\PycharmProjects\microblog\app\__init__.py:77]
+2020-02-07 19:06:59,364 INFO: Microblog startup [in C:\Users\a_smi\PycharmProjects\microblog\app\__init__.py:77]
+2020-02-07 19:07:00,243 ERROR: Exception on /user/lexa [GET] [in C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 1947, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 2241, in preprocess_request
+    rv = func()
+  File "C:\Users\a_smi\PycharmProjects\microblog\app\main\routes.py", line 19, in before_request
+    g.search_form = SearchForm()
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\form.py", line 212, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\a_smi\PycharmProjects\microblog\app\main\forms.py", line 39, in __init__
+    super(SearchForm, self).__init__(*args, **kwargs)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask_wtf\form.py", line 88, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\form.py", line 272, in __init__
+    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\form.py", line 52, in __init__
+    field = meta.bind_field(self, unbound_field, options)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\meta.py", line 27, in bind_field
+    return unbound_field.bind(form=form, **options)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\fields\core.py", line 353, in bind
+    return self.field_class(*self.args, **kw)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\fields\core.py", line 115, in __init__
+    for v in itertools.chain(self.validators, [self.widget]):
+TypeError: 'DataRequired' object is not iterable
+2020-02-07 19:07:13,807 INFO: Microblog startup [in C:\Users\a_smi\PycharmProjects\microblog\app\__init__.py:77]
+2020-02-07 19:07:15,998 ERROR: Exception on /user/lexa [GET] [in C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 1947, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask\app.py", line 2241, in preprocess_request
+    rv = func()
+  File "C:\Users\a_smi\PycharmProjects\microblog\app\main\routes.py", line 19, in before_request
+    g.search_form = SearchForm()
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\form.py", line 212, in __call__
+    return type.__call__(cls, *args, **kwargs)
+  File "C:\Users\a_smi\PycharmProjects\microblog\app\main\forms.py", line 39, in __init__
+    super(SearchForm, self).__init__(*args, **kwargs)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\flask_wtf\form.py", line 88, in __init__
+    super(FlaskForm, self).__init__(formdata=formdata, **kwargs)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\form.py", line 272, in __init__
+    super(Form, self).__init__(self._unbound_fields, meta=meta_obj, prefix=prefix)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\form.py", line 52, in __init__
+    field = meta.bind_field(self, unbound_field, options)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\meta.py", line 27, in bind_field
+    return unbound_field.bind(form=form, **options)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\fields\core.py", line 353, in bind
+    return self.field_class(*self.args, **kw)
+  File "C:\Users\a_smi\PycharmProjects\microblog\venv\lib\site-packages\wtforms\fields\core.py", line 115, in __init__
+    for v in itertools.chain(self.validators, [self.widget]):
+TypeError: 'DataRequired' object is not iterable
+2020-02-07 19:07:58,796 INFO: Microblog startup [in C:\Users\a_smi\PycharmProjects\microblog\app\__init__.py:77]
