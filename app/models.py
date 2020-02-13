@@ -14,7 +14,6 @@ from flask import url_for
 import os
 import base64
 
-
 followers = db.Table('followers',
                      db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
                      db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
@@ -36,9 +35,9 @@ class PaginatedAPIMixin(object):
             '_links': {
                 'self': url_for(endpoint, page=page, per_page=per_page,
                                 **kwargs),
-                'next': url_for(endpoint, page=page+1, per_page=per_page,
+                'next': url_for(endpoint, page=page + 1, per_page=per_page,
                                 **kwargs) if resources.has_next else None,
-                'prev': url_for(endpoint, page=page-1, per_page=per_page,
+                'prev': url_for(endpoint, page=page - 1, per_page=per_page,
                                 **kwargs) if resources.has_prev else None
             }
         }
@@ -62,8 +61,8 @@ class User(PaginatedAPIMixin, UserMixin, db.Model):
                                     foreign_keys='Message.sender_id',
                                     backref='author', lazy='dynamic')
     messages_received = db.relationship('Message',
-                                       foreign_keys='Message.recipient_id',
-                                       backref='recipient', lazy='dynamic')
+                                        foreign_keys='Message.recipient_id',
+                                        backref='recipient', lazy='dynamic')
     last_message_read_time = db.Column(db.DateTime)
     notifications = db.relationship('Notification', backref='user',
                                     lazy='dynamic')
@@ -125,12 +124,12 @@ class User(PaginatedAPIMixin, UserMixin, db.Model):
 
     def add_notification(self, name, data):
         self.notifications.filter_by(name=name).delete()
-        n = Notification(name=name, payload_json=json.dumps(data),user=self)
+        n = Notification(name=name, payload_json=json.dumps(data), user=self)
         db.session.add(n)
         return n
 
     def launch_task(self, name, description, *args, **kwargs):
-        rq_job = current_app.task_queue.enqueue('app.tasks.'+name, self.id,
+        rq_job = current_app.task_queue.enqueue('app.tasks.' + name, self.id,
                                                 *args, **kwargs)
         task = Task(id=rq_job.get_id(), name=name, description=description, user=self)
         db.session.add(task)
@@ -168,7 +167,6 @@ class User(PaginatedAPIMixin, UserMixin, db.Model):
                 setattr(self, field, data[field])
         if new_user and 'password' in data:
             self.set_password(data['password'])
-
 
     def get_token(self, expires_in=3600):
         now = datetime.utcnow()
@@ -220,7 +218,7 @@ class SearchableMixin(object):
                 add_to_index(obj.__tablename__, obj)
         for obj in session._changes['delete']:
             if isinstance(obj, SearchableMixin):
-                add_to_index(obj.__tablename__, obj)
+                remove_from_index(obj.__tablename__, obj)
         session._changes = None
 
     @classmethod
@@ -250,7 +248,7 @@ class Message(db.Model):
     sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     recipient_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     body = db.Column(db.String(140))
-    timestamp = db.Column(db.DateTime, index = True, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
         return '<Message {}>'.format(self.body)
@@ -262,7 +260,6 @@ class Notification(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     timestamp = db.Column(db.Float, index=True, default=time)
     payload_json = db.Column(db.Text)
-
 
     def get_data(self):
         return json.loads(str(self.payload_json))
@@ -290,5 +287,3 @@ class Task(db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
-
-

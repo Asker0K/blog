@@ -156,7 +156,7 @@ def search():
                            next_url=next_url, prev_url=prev_url)
 
 
-@bp.route('/send_message/<recipient>', methods = ['GET', 'POST'])
+@bp.route('/send_message/<recipient>', methods=['GET', 'POST'])
 @login_required
 def send_message(recipient):
     user = User.query.filter_by(username=recipient).first_or_404()
@@ -182,7 +182,7 @@ def messages():
     page = request.args.get('page', 1, type=int)
     messages = current_user.messages_received.order_by(
         Message.timestamp.desc()).paginate(
-            page, current_app.config['POSTS_PER_PAGE'], False)
+        page, current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('main.messages', page=messages.next_num) \
         if messages.has_next else None
     prev_url = url_for('main.messages', page=messages.prev_num) \
@@ -210,10 +210,6 @@ def notifications():
         Notification.timestamp > since).order_by(Notification.timestamp.asc())
     return jsonify([{
         'name': n.name,
-        'data':n.get_data(),
-        'timestamp':n.timestamp
-    }for n in notifications])
-
-
-
-
+        'data': n.get_data(),
+        'timestamp': n.timestamp
+    } for n in notifications])
