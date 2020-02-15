@@ -32,3 +32,6 @@ class Config(object):
     ELASTICSEARCH_URL = os.getenv('ELASTICSEARCH_URL')
 
     REDIS_URL = os.getenv('REDIS_URL') or 'redis://'
+
+    # Flask-admin
+    FLASK_ADMIN_SWATCH = os.getenv('FLASK_ADMIN_SWATCH') or 'cerulean'

@@ -12,6 +12,7 @@ from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_babel import Babel, lazy_gettext as _l
+from flask_admin import Admin
 from redis import Redis
 import rq
 from config import Config
@@ -25,6 +26,7 @@ mail = Mail()
 bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel()
+admin = Admin(name='microblog', template_mode='bootstrap3')
 
 
 def create_app(config_class=Config):
@@ -38,8 +40,12 @@ def create_app(config_class=Config):
     bootstrap.init_app(app)
     moment.init_app(app)
     babel.init_app(app)
+    admin.init_app(app)
     app.redis = Redis.from_url(app.config['REDIS_URL'])
     app.task_queue = rq.Queue('microblog-tasks', connection=app.redis)
+
+    from app.adminbp import bp as bp_admin  # Fixed
+    app.register_blueprint(bp_admin)
 
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)

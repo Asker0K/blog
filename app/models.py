@@ -69,9 +69,10 @@ class User(PaginatedAPIMixin, UserMixin, db.Model):
     tasks = db.relationship('Task', backref='user', lazy='dynamic')
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
+    role = db.Column(db.String(32), default='User')
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<{}-{}>'.format(self.role, self.username)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
